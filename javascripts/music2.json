@@ -1,0 +1,24 @@
+{ "songs": [
+
+		{"name": "Sparks",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Wait in Line",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Running",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Hear Your Heart",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Heavy Handed",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		}
+]
+}

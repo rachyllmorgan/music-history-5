@@ -1,0 +1,18 @@
+ul.nav.nav-pills {
+  margin-left: 3px; }
+
+li {
+  list-style-type: none; }
+
+h5 {
+  color: grey; }
+
+td {
+  color: dimgray; }
+  td input[type="checkbox"] {
+    margin-left: 20px; }
+
+.remove {
+  background-color: #e6e6e6; }
+
+/*# sourceMappingURL=style.css.map */
