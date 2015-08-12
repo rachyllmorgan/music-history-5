@@ -1,0 +1,84 @@
+{ "songs": [
+
+		{"name": "Sparks",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Wait in Line",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Running",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Hear Your Heart",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Heavy Handed",
+		 "artist": "James Bay",
+		 "album": "Other Sides"
+		},
+	{"name": "Craving",
+		 "artist": "James Bay",
+		 "album": "Chaos and the Calm"
+		},
+	{"name": "Hold Back the River",
+		 "artist": "James Bay",
+		 "album": "Chaos and the Calm"
+		},
+	{"name": "Let it Go",
+		 "artist": "James Bay",
+		 "album": "Chaos and the Calm"
+		},
+	{"name": "If You Ever Want to Be in Love",
+		 "artist": "James Bay",
+		 "album": "Chaos and the Calm"
+		},
+	{"name": "Stealing Cars",
+		 "artist": "James Bay",
+		 "album": "Chaos and the Calm"
+		},
+	{"name": "Sparks",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Wait in Line",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Running",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Hear Your Heart",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Heavy Handed",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Craving",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Hold Back the River",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Let it Go",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "If You Ever Want to Be in Love",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		},
+	{"name": "Stealing Cars",
+		 "artist": "Florence & the Machines",
+		 "album": "Ceremonials"
+		}
+]
+}

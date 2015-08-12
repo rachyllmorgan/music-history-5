@@ -25,17 +25,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">View Music <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.html">View Music <span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Music <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Add Music</a></li>
+            <li><a href="addmusic.html">Add Music</a></li>
             <li><a href="#">Edit Album</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="#">Create Playlist</a></li>
 						<li><a href="#">Edit Playlist</a></li>
           </ul>
-				<li><a href="#">Profile</a></li>
+				<li><a href="profile.html">Profile</a></li>
         </li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -51,24 +51,23 @@
 	<div class="container-fluid">
 		<div class="row row-eq-height">
 			
-			<!--********Left Form***********-->
+		<!--********Left Form***********-->
 			<div class="col-sm-5 col-md-4 left">
 				
-			<!--********Song Length***********-->	
+		<!--********Song Length***********-->	
+<!--
 				<div>
 					<label><h5>Song Length</h5></label><input type="range">
 				</div>
 				</br>
-			<!--********Artist Dropdown***********-->
+-->
+		<!--********Artist Dropdown***********-->
 				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle artistMenu" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<button class="btn btn-default dropdown-toggle artistBtn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						Artists
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-						<li><a href="#">James Bay</a></li>
-						<li><a href="#">Florence & the Machines</a></li>
-						<li><a href="#">Jack White</a></li>
+					<ul class="dropdown-menu artistMenu" aria-labelledby="dropdownMenuDivider">
 					</ul>
 				</div>
 				</br>
@@ -79,10 +78,7 @@
 						Albums
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-						<li><a href="#">Chaos and the Calm</a></li>
-						<li><a href="#">Ceremonials</a></li>
-						<li><a href="#">Lazaretto</a></li>
+					<ul class="dropdown-menu albumList" aria-labelledby="dropdownMenuDivider">
 					</ul>
 				</div>
 				</br>
@@ -113,9 +109,11 @@
   				<li class="list-group-item">
   				</li>
 				</ul>
+<!--  More Button
 					<div>
 						<button id="moreSongs">More</button>
 					</div>
+-->
 				</div>
 			</div>
 	</div>

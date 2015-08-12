@@ -1,9 +1,12 @@
-<div class="">
+<div class="list-group">
 	{{#each songs}}
 	<div>
 		<h4>{{name}}</h4>
 		<p>Artist: {{artist}}</p> 
 		<p>Album: {{album}}</p>
-	</div></br>
+	</br>
+	<button type='button' class="remove btn btn-default btn-xs">Remove</button>
+</br>
+</div>
 	{{/each}}
 </div>
