@@ -17,4 +17,8 @@ td {
 .remove {
   background-color: #e6e6e6; }
 
+.artistList > a {
+  margin-left: -15px;
+  padding-right: 15px; }
+
 /*# sourceMappingURL=style.css.map */

@@ -7,7 +7,8 @@ requirejs.config({
 		'firebase': '../bower_components/firebase/firebase',
 		'lodash': '../bower_components/lodash/lodash',
     'hbs': '../bower_components/require-handlebars-plugin/hbs',
-    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min'
+    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min',
+    'q': '../bower_components/q/q'
   },
   shim: {
     'bootstrap': ['jquery'],
@@ -17,75 +18,70 @@ requirejs.config({
 	}
 });
 
-requirejs(
-["jquery", "lodash", "firebase", "hbs", "bootstrap", "populate-songs", "get-more-songs"],
-	function ($, _, _firebase, Handlebars, bootstrap, popSongs, moreSongs) {
+requirejs(["dependencies", "firebase", "populate-songs","authentication"],
+	function (dependencies, firebase, popSongs, auth) {
+
+		// Detect if already logged in
+		var ref = new Firebase("https://radiant-fire-6211.firebaseio.com");
+		var authData = ref.getAuth();
+			console.log("authData", authData);
+
+		//if there is no token key on the authData object, authenticate with GitHub OAuth
+		if(authData === null) {
+			ref.authWithOAuthPopup("github", function(error, authData) {
+  				if (error) {
+  	  			console.log("Login Failed!", error);
+  				} else {
+    				console.log("Authenticated successfully with payload:", authData);
+    				auth.setUid(authData.uid);
+    				//require(["core_list"], function(){}) --- create a new file to hold all info so page will not load until authenticated
+  				}
+			});
+			// user already authenticated, store uid and show data
+		} else {
+			auth.setUid(authData.uid);
+		//require(["core_list"], function(){}) --- create a new file to hold all info so page will not load until authenticated	
+		}
 		
-		var myFirebaseRef = new Firebase("https://radiant-fire-6211.firebaseio.com");
+	var myFirebaseRef = new Firebase("https://radiant-fire-6211.firebaseio.com");
 		
-		myFirebaseRef.on("value", function(snapshot) {
+	myFirebaseRef.on("value", function(snapshot) {
   var songs = snapshot.val();
+  	console.log("music.js songs", songs);
+	 	displaySongs(songs);
 
+	// $(".list-group").html("<h3>Select an Artist</h3>");
 
-	// Empty Array for unique
-			
-	var allSongsArray = [];
-		
-	for (var key in songs.songs) {
-      allSongsArray[allSongsArray.length] = songs.songs[key];
-      }
-		console.log("allSongsArray", allSongsArray);
-		
-		var uniqueArtist =_.chain(allSongsArray)
-				.uniq("artist")
-				.pluck("artist")
-				.value();
-		
-		var uniqueAlbum =_.chain(allSongsArray)
-				.uniq("album")
-				.pluck("album")
-				.value();
-		
-		console.log(uniqueArtist);
-		console.log(uniqueAlbum);
-			
-//	function displaySongs() {
-		require(['hbs!../templates/songs'],
-			function(songTemplate){
-				$(".list-group").html(songTemplate(songs));
-					});
-//		}
+		// Display songs from filter
+				
+		function displaySongs() {
+			require(['hbs!../templates/songs'],
+				function(songTemplate){
+					$(".list-group").html(songTemplate(songs));
+						});
+		}
 
-	// Artist Menu Populate		
-			
-	require(['hbs!../templates/artist_menu'],
-		function(artistTemplate){	$(".artistMenu").html(artistTemplate({artist: uniqueArtist}));
-		console.log(songs.songs);
-		});												
-		
-	$(".list-group").html("<h3>Select an Artist</h3>");
-		
-	$(".dropdown-menu li").click(function(){
-		$(".albumMenu").removeClass("disabled");
-	});
-	
-		// Submit button to add music
-$(".subBtn").click(function(){
-	event.preventDefault();
-	var newSong = {
-		"name": $("#inputSongName").val(),
-		"artist": $("#inputArtist").val(),
-		"album": $("#inputAlbum").val(),
-};
-		console.log("newSong", newSong);
-	
-		$.ajax({
-        url: "https://radiant-fire-6211.firebaseio.com/songs.json",
-			method: "POST",
-			data: JSON.stringify(newSong)
-      }).done(function(addedSong) {
-				console.log(addedSong);
-		});
-});
-		});
-	});   //****** Keep me on the outside
+ });
+
+// Using Promises
+
+	var list_of_songs = popSongs();
+
+	var all_songs = [];
+
+		console.log("all_songs", all_songs);
+
+	list_of_songs
+		.then(function(list_songs){
+			console.log("list_songs before loop", list_songs);
+			for (var i = 0; i <= list_songs.length; i++) {
+				console.log("list_songs after loop", list_songs[i].songs);
+				all_songs.push(list_songs[i].songs);
+			}
+
+			return list_of_songs;
+		})
+		.fail()
+		.done();
+
+});   //****** Keep me on the outside

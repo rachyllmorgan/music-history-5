@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Nashville Software School</title>
+  <title>Music History</title>
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -54,37 +54,27 @@
 		<!--********Left Form***********-->
 			<div class="col-sm-5 col-md-4 left">
 				
-		<!--********Song Length***********-->	
-<!--
-				<div>
-					<label><h5>Song Length</h5></label><input type="range">
-				</div>
-				</br>
--->
 		<!--********Artist Dropdown***********-->
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle artistBtn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						Artists
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu artistMenu" aria-labelledby="dropdownMenuDivider">
-					</ul>
+					<ul class="dropdown-menu artistMenu" aria-labelledby="dropdownMenuDivider"></ul>
 				</div>
 				</br>
 		
-			<!--********Album Dropdown***********-->
+		<!--********Album Dropdown***********-->
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle disabled albumMenu" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						Albums
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu albumList" aria-labelledby="dropdownMenuDivider">
-					</ul>
+					<ul class="dropdown-menu albumList" aria-labelledby="dropdownMenuDivider"></ul>
 				</div>
 				</br>
 	
-			<!--********Checkboxes***********-->
-	
+		<!--********Checkboxes***********-->
 				<div class="table-responsive">
 					<table class="table">
 						<tr>
@@ -102,28 +92,16 @@
 					</table>
 				</div>
 			</div>
+
 		 <!--******** Right Table ***********-->
 			<div class="col-sm-7 col-md-8 right">
-<!--<table id="table-body"></table>-->
 				<ul class="list-group">
-  				<li class="list-group-item">
-  				</li>
+  				<li class="list-group-item"></li>
 				</ul>
-<!--  More Button
-					<div>
-						<button id="moreSongs">More</button>
-					</div>
--->
 				</div>
 			</div>
 	</div>
-<!--    <script data-main="javascripts/music" src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
-<script src="bower_components/requirejs/require.js"></script>
-<!--
-		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="bower_components/handlebars/handlebars.amd.min.js"></script>
--->
-    <script src="javascripts/music.js"></script>
+<script data-main="javascripts/music" src="bower_components/requirejs/require.js"></script>
 </body>  
 	
 </html>
