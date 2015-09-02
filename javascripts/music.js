@@ -3,12 +3,15 @@
 requirejs.config({
   baseUrl: './javascripts',
   paths: {
-    'jquery': '../bower_components/jquery/dist/jquery.min',
-		'firebase': '../bower_components/firebase/firebase',
-		'lodash': '../bower_components/lodash/lodash',
-    'hbs': '../bower_components/require-handlebars-plugin/hbs',
-    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min',
-    'q': '../bower_components/q/q'
+    	'jquery': '../lib/bower_components/jquery/dist/jquery.min',
+	'firebase': '../lib/bower_components/firebase/firebase',
+	'lodash': '../lib/bower_components/lodash/lodash',
+    	'hbs': '../lib/bower_components/require-handlebars-plugin/hbs',
+    	'bootstrap': '../lib/bower_components/bootstrap/dist/js/bootstrap.min',
+    	'q': '../lib/bower_components/q/q',
+    	"es6": '../lib/bower_components/requirejs-babel/es6',
+    	"requirejs-babel": '../lib/bower_components/requirejs-babel/babel-5.8.22.min'
+
   },
   shim: {
     'bootstrap': ['jquery'],
@@ -18,48 +21,51 @@ requirejs.config({
 	}
 });
 
-requirejs(["dependencies", "firebase", "populate-songs","authentication"],
-	function (dependencies, firebase, popSongs, auth) {
-
-		// Detect if already logged in
-		var ref = new Firebase("https://radiant-fire-6211.firebaseio.com");
-		var authData = ref.getAuth();
-			console.log("authData", authData);
-
-		//if there is no token key on the authData object, authenticate with GitHub OAuth
-		if(authData === null) {
-			ref.authWithOAuthPopup("github", function(error, authData) {
-  				if (error) {
-  	  			console.log("Login Failed!", error);
-  				} else {
-    				console.log("Authenticated successfully with payload:", authData);
-    				auth.setUid(authData.uid);
-    				//require(["core_list"], function(){}) --- create a new file to hold all info so page will not load until authenticated
-  				}
-			});
-			// user already authenticated, store uid and show data
-		} else {
-			auth.setUid(authData.uid);
-		//require(["core_list"], function(){}) --- create a new file to hold all info so page will not load until authenticated	
-		}
+requirejs(["dependencies", "firebase", "authentication", "populate-songs"],
+	function (dependencies, firebase, authentication, popSongs) {
 		
 	var myFirebaseRef = new Firebase("https://radiant-fire-6211.firebaseio.com");
 		
 	myFirebaseRef.on("value", function(snapshot) {
-  var songs = snapshot.val();
-  	console.log("music.js songs", songs);
-	 	displaySongs(songs);
+  	var songs = snapshot.val();
+  		console.log("music.js songs", songs);
+	 		displaySongs(songs);
+
+	// Detect if already logged in
+	var ref = new Firebase("https://radiant-fire-6211.firebaseio.com");
+	var authData = ref.getAuth();
+		console.log("authData", authData);
+
+ 	//if there is no token key on the authData object, authenticate with GitHub OAuth
+	if(authData === null) {
+		ref.authWithOAuthPopup("github", function(error, authData) {
+				if (error) {
+	  			console.log("Login Failed!", error);
+				} else {
+  				console.log("Authenticated successfully with payload:", authData);
+
+  				auth.setUid(authData.uid);
+
+ //require(["core_list"], function(){}) --- create a new file to hold all info so page will not load until authenticated
+				}
+		});
+
+// user already authenticated, store uid and show data
+	} else {
+		auth.setUid(authData.uid);
+//require(["core_list"], function(){}) --- create a new file to hold all info so page will not load until authenticated	
+	}
 
 	// $(".list-group").html("<h3>Select an Artist</h3>");
 
 		// Display songs from filter
 				
-		function displaySongs() {
-			require(['hbs!../templates/songs'],
-				function(songTemplate){
-					$(".list-group").html(songTemplate(songs));
-						});
-		}
+	function displaySongs() {
+		require(['hbs!../templates/songs'],
+			function(songTemplate){
+				$(".list-group").html(songTemplate(songs));
+			});
+	}
 
  });
 

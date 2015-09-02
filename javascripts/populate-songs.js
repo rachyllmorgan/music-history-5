@@ -12,8 +12,8 @@ return function(){
   	url: "https://radiant-fire-6211.firebaseio.com/.json"
   })
     .done(function(songs_data) {
-      console.log("songs_data", songs_data);
       deferred.resolve(songs_data);
+        console.log("songs_data", songs_data);
     })
     .fail(function(xhr, status, error) {
       deferred.reject(error);
@@ -22,4 +22,5 @@ return function(){
   // Return the promise
   return deferred.promise;
 	};
+
 });

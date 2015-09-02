@@ -1,7 +1,10 @@
 define(function(require){
+	var firebase = require("firebase");
+
 	var uid = null;
 
 	return {
+
 		getUid: function(){
 			console.log("returning ", uid);
 			return uid;
@@ -11,4 +14,5 @@ define(function(require){
 		uid = newId;
 		}
 	};
+
 });
